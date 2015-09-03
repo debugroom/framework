@@ -12,6 +12,7 @@
    <properties>
     <java-version>1.8</java-version>
     <encoding>UTF-8</encoding>
+    <org.debugroom_framework-test_version>1.0-SNAPSHOT</org.debugroom_framework-test_version>
     <org.springframework-version>3.2.11.RELEASE</org.springframework-version>
     <org.springframework_spring-context_version>3.2.11.RELEASE</org.springframework_spring-context_version>
     <org.springframework_spring-jdbc_version>3.2.11.RELEASE</org.springframework_spring-jdbc_version>
@@ -54,6 +55,11 @@
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.debugroom</groupId>
+        <artifactId>framework-test</artifactId>
+        <version>${org.debugroom_framework-test_version}</version>
+      </dependency>
       <!-- Spring -->
       <dependency>
         <groupId>org.springframework</groupId>

@@ -17,11 +17,14 @@
     <dependency>
       <groupId>javax.inject</groupId>
       <artifactId>javax.inject</artifactId>
-      <version>${javax.inject_javax.inject_version}</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.debugroom</groupId>
+      <artifactId>framework-test</artifactId>
     </dependency>
   </dependencies>
   
