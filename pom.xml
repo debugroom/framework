@@ -8,5 +8,6 @@
   <name>framework</name>
   <modules>
   	<module>framework-parent</module>
+  	<module>framework-common</module>
   </modules>
 </project>
