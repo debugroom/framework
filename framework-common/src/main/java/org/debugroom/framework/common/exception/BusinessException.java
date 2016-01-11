@@ -15,6 +15,10 @@ public class BusinessException extends Exception{
         super();
     }
     
+    public BusinessException(String code){
+    	this.code = code;
+    }
+
     public BusinessException(String code, String message){
         super(message);
         this.code = code;
