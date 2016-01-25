@@ -13,6 +13,7 @@
     <java-version>1.8</java-version>
     <encoding>UTF-8</encoding>
     <org.debugroom_framework-test_version>1.0-SNAPSHOT</org.debugroom_framework-test_version>
+    <!--  
     <org.springframework-version>3.2.11.RELEASE</org.springframework-version>
     <org.springframework_spring-context_version>3.2.11.RELEASE</org.springframework_spring-context_version>
     <org.springframework_spring-jdbc_version>3.2.11.RELEASE</org.springframework_spring-jdbc_version>
@@ -26,6 +27,8 @@
     <org.springframework.data_spring-data-rest-core_version>2.2.2.RELEASE</org.springframework.data_spring-data-rest-core_version>
     <org.springframework.data_spring-data-commons_version>1.6.4.RELEASE</org.springframework.data_spring-data-commons_version>
     <org.springframework.data_spring-data-jpa_version>1.4.3.RELEASE</org.springframework.data_spring-data-jpa_version>
+    -->
+    <io.spring.platform_platform-bom_version>2.0.1.RELEASE</io.spring.platform_platform-bom_version>
     <org.aspectj_aspectjrt_version>1.6.11</org.aspectj_aspectjrt_version>
     <org.aspectj_aspectjweaver_version>1.6.11</org.aspectj_aspectjweaver_version>
     <cglib_cglib_version>2.2</cglib_cglib_version>
@@ -60,13 +63,22 @@
         <artifactId>framework-test</artifactId>
         <version>${org.debugroom_framework-test_version}</version>
       </dependency>
+      
       <!-- Spring -->
+      <dependency>
+        <groupId>io.spring.platform</groupId>
+        <artifactId>platform-bom</artifactId>
+        <version>${io.spring.platform_platform-bom_version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+
+<!--  
       <dependency>
         <groupId>org.springframework</groupId>
         <artifactId>spring-context</artifactId>
         <version>${org.springframework_spring-context_version}</version>
         <exclusions>
-        <!-- Exclude Commons Logging in favor of SLF4j -->
           <exclusion>
             <groupId>commons-logging</groupId>
             <artifactId>commons-logging</artifactId>
@@ -146,6 +158,7 @@
         <artifactId>spring-data-rest-core</artifactId>
         <version>${org.springframework.data_spring-data-rest-core_version}</version>
       </dependency>
+-->
         
       <!-- AspectJ -->
       <dependency>
