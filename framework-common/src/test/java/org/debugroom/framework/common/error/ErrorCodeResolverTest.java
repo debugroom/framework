@@ -8,11 +8,12 @@ import org.junit.experimental.runners.Enclosed;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
-//import org.junit.experimental.categories.Category;
+import org.junit.experimental.categories.Category;
 
 import org.debugroom.framework.common.error.ErrorCodeResolver;
 import org.debugroom.framework.common.exception.BusinessException;
 import org.debugroom.framework.common.exception.SystemException;
+import org.debugroom.framework.test.junit.category.UnitTests;
 
 /**
  * 
@@ -22,6 +23,7 @@ import org.debugroom.framework.common.exception.SystemException;
 @RunWith(Enclosed.class)
 public class ErrorCodeResolverTest {
 
+	   @Category(UnitTests.class)
 	   @RunWith(Enclosed.class)
 	    public static class ErrorCodeResolverUnitTest{
 	        
