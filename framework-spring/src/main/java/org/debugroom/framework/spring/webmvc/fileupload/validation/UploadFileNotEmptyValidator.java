@@ -19,7 +19,7 @@ public class UploadFileNotEmptyValidator
 	public boolean isValid(MultipartFile multipartFile, 
 			ConstraintValidatorContext context) {
 		if (multipartFile == null || !StringUtils.hasLength(multipartFile.getOriginalFilename())){
-			return false;
+			return true;
 		}
 		return !multipartFile.isEmpty();
 	}
