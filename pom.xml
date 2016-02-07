@@ -11,5 +11,6 @@
   	<module>framework-common</module>
   	<module>framework-test</module>
   	<module>framework-spring</module>
+  	<module>tools</module>
   </modules>
 </project>
