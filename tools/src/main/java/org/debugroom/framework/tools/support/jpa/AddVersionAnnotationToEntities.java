@@ -1,33 +1,34 @@
-package org.debugroom.framework.tools.support.lombok;
+package org.debugroom.framework.tools.support.jpa;
 
 import java.io.File;
 import java.io.FilenameFilter;
-
+import java.io.IOException;
 import java.util.List;
 import java.util.ArrayList;
 
 import org.apache.commons.configuration.Configuration;
+import org.apache.commons.configuration.ConfigurationException;
 import org.apache.commons.configuration.PropertiesConfiguration;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.WildcardFileFilter;;
 
-public class AddLombokAnnotationToEntities {
+public class AddVersionAnnotationToEntities {
 
-	public static void main(String[] args) throws Exception{
-		
+	public static void main(String[] args) throws Exception {
+
 		Configuration configuration = new PropertiesConfiguration("META-INF/settings.properties");
 		File entityClassDir = new File(configuration.getString("entityclass.filepath"));
 
 		File[] entityClasses = entityClassDir.listFiles(
 				(FilenameFilter)new WildcardFileFilter("*.java"));
-		
+
+		String injectionAnnotationKeyword1 = configuration.getString("jpa.version.annotation.injection.annotation.keyword1");
+		String injectionAnnotationKeyword2 = configuration.getString("jpa.version.annotation.injection.annotation.keyword2");
 		Boolean isAdded = false;
+			
 		List<String> sourceCodeList = null;
 		List<String> newSourceCodeList = null;
 		File newEntityClass = null;
-		String injectionImportKeyword = configuration.getString("lombok.annotation.injection.import.keyword");
-		String injectionAnnotationKeyword1 = configuration.getString("lombok.annotation.injection.annotation.keyword1");
-		String injectionAnnotationKeyword2 = configuration.getString("lombok.annotation.injection.annotation.keyword2");
 
 		for(File entityClass : entityClasses){
 
@@ -38,16 +39,10 @@ public class AddLombokAnnotationToEntities {
 			isAdded = false;
 
 			for(String sourceCode : sourceCodeList){
-				if("import lombok.AllArgsConstructor;".equals(sourceCode)){
+				if(injectionAnnotationKeyword2.equals(sourceCode)){
 					isAdded = true;
-				}else if(!isAdded && injectionImportKeyword.equals(sourceCode)){
-					newSourceCodeList.add("import lombok.AllArgsConstructor;");
-					newSourceCodeList.add("import lombok.Builder;");
-					newSourceCodeList.add("");
-				}else if(!isAdded && (injectionAnnotationKeyword1.equals(sourceCode) 
-						|| injectionAnnotationKeyword2.equals(sourceCode))){
-					newSourceCodeList.add("@AllArgsConstructor");
-					newSourceCodeList.add("@Builder");
+				}else if(!isAdded && injectionAnnotationKeyword1.equals(sourceCode)){
+					newSourceCodeList.add("\t@Version");
 				}
 				newSourceCodeList.add(sourceCode);
 			}
@@ -55,7 +50,6 @@ public class AddLombokAnnotationToEntities {
 			FileUtils.writeLines(newEntityClass, 
 					configuration.getString("entityclass.write.encoding"), 
 					newSourceCodeList);
-			
 		}
 
 	}
