@@ -10,9 +10,16 @@ public class SystemException extends RuntimeException {
 	private static final long serialVersionUID = 1224708518547488375L;
 
 	private String code;
+	private Object[] args;
     
     public SystemException(){
         super();
+    }
+
+    public SystemException(String code, String message, Object[] args, Throwable cause){
+    	super(message, cause);
+    	this.code = code;
+    	this.setArgs(args);
     }
 
     public SystemException(String code, String message, Throwable cause){
@@ -25,6 +32,12 @@ public class SystemException extends RuntimeException {
         this.code = code;
     }
     
+    public SystemException(String code, Object[] args, Throwable cause){
+        super(cause);
+        this.code = code;
+        this.setArgs(args);
+    }
+
     public SystemException(String code, Throwable cause){
         super(cause);
         this.code = code;
@@ -37,5 +50,13 @@ public class SystemException extends RuntimeException {
     public void setCode(String code) {
         this.code = code;
     }
+
+	public Object[] getArgs() {
+		return args;
+	}
+
+	public void setArgs(Object[] args) {
+		this.args = args;
+	}
     
 }

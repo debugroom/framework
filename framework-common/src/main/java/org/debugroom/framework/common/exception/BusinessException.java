@@ -10,6 +10,7 @@ public class BusinessException extends Exception{
 	private static final long serialVersionUID = 1533161718943831833L;
 
 	private String code;
+	private Object[] args;
     
     public BusinessException(){
         super();
@@ -29,9 +30,21 @@ public class BusinessException extends Exception{
         this.code = code;
     }
 
+    public BusinessException(String code, Throwable cause, Object... args){
+        super(cause);
+        this.code = code;
+        this.args = args;
+    }
+    
     public BusinessException(String code, String message, Throwable cause){
         super(message, cause);
         this.code = code;
+    }
+
+    public BusinessException(String code, String message, Throwable cause, Object... args){
+        super(message, cause);
+        this.code = code;
+        this.args = args;
     }
 
     public String getCode() {
@@ -41,5 +54,13 @@ public class BusinessException extends Exception{
     public void setCode(String code) {
         this.code = code;
     }
+
+	public Object[] getArgs() {
+		return args;
+	}
+
+	public void setArgs(Object[] args) {
+		this.args = args;
+	}
 
 }
