@@ -27,4 +27,30 @@
     </dependency>
   </dependencies>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-install-plugin</artifactId>
+        <version>2.5.1</version>
+        <executions>
+          <execution>
+            <id>install-framework-spring</id>
+            <phase>install</phase>
+            <goals>
+              <goal>install-file</goal>
+            </goals>
+            <configuration>
+              <packaging>jar</packaging>
+              <artifactId>framework-spring</artifactId>
+              <groupId>${project.groupId}</groupId>
+              <version>${project.version}</version>
+              <file>../framework-spring/target/framework-spring-${project.version}.jar</file>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+  
 </project>
