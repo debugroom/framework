@@ -14,6 +14,7 @@ public enum MediaType {
 	APPLICATION_XML(com.google.common.net.MediaType.XML_UTF_8.toString()),
 	MP4_VIDEO(com.google.common.net.MediaType.MP4_VIDEO.toString()),
 	MPEG_VIDEO(com.google.common.net.MediaType.MPEG_VIDEO.toString()),
+	QUICKTIME_VIDEO(com.google.common.net.MediaType.QUICKTIME.toString()),
 	WMV(com.google.common.net.MediaType.WMV.toString()),
 	BMP(com.google.common.net.MediaType.BMP.toString()),
 	PNG(com.google.common.net.MediaType.PNG.toString()),
