@@ -3,6 +3,8 @@ package org.debugroom.framework.common.web;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.commons.lang3.StringUtils;
+
 public enum MediaType {
 
 	APPLICATION_ATOM_XML(com.google.common.net.MediaType.ATOM_UTF_8.toString()),
@@ -51,4 +53,34 @@ public enum MediaType {
 		return cache.get(type);
 	}
 
+	public static MediaType getMediaType(String fileName){
+		String extension = StringUtils.substringAfterLast(fileName, ".");
+		switch(extension.toLowerCase()){
+		case "xml":
+			return cache.get(APPLICATION_ATOM_XML.VALUE);
+		case "json":
+			return cache.get(APPLICATION_JSON.VALUE);
+		case "jpg":
+			return cache.get(JPEG.VALUE);
+		case "jpeg":
+			return cache.get(JPEG.VALUE);
+		case "png":
+			return cache.get(PNG.VALUE);
+		case "gif":
+			return cache.get(GIF.VALUE);
+		case "tiff":
+			return cache.get(TIFF.VALUE);
+		case "bmp":
+			return cache.get(BMP.VALUE);
+		case "mp4":
+			return cache.get(MP4_VIDEO.VALUE);
+		case "m4v":
+			return cache.get(MPEG_VIDEO.VALUE);
+		case "mov":
+			return cache.get(MPEG_VIDEO.VALUE);
+		case "wmv":
+			return cache.get(WMV.VALUE);
+		}
+		return null;
+	}
 }
